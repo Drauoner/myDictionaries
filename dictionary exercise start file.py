@@ -96,22 +96,23 @@ def deal_cards(deck, number):
         print(card)
     """
 
-    list_of_keys = []
+    #    list_of_keys = []
 
+    """
     for key in deck:
         list_of_keys.append(key)
 
     print(list_of_keys)
+    """
 
     for count in range(number):
-        card = random.choice(list_of_keys)
+        card = random.choice(list(deck))
         value = deck[card]
 
         print(card)
 
         hand_value += value
 
-        list_of_keys.remove(card)
         del deck[card]
 
         #       for key, value in deck.pop():
