@@ -83,23 +83,45 @@ def create_deck():
 
 def deal_cards(deck, number):
     # Initialize an accumulator for the hand value.
-    i = 0
-    rand = random.randint(1, 52)
+    hand_value = 0
+    rand = random.randint(1, len(deck))
     # Make sure the number of cards to deal is not
     # greater than the number of cards in the deck.
-    if number > 52:
-        print("Too many cards. Pick a number smaller than 52.")
-    else:
+    if number > len(deck):
+        number = len(deck)
         # Deal the cards and accumulate their values.
+    """
+    for count in range(number):
+        card, value = deck.popitem()
+        print(card)
+    """
+
+    list_of_keys = []
+
+    for key in deck:
+        list_of_keys.append(key)
+
+    print(list_of_keys)
+
+    for count in range(number):
+        card = random.choice(list_of_keys)
+        value = deck[card]
+
+        print(card)
+
+        hand_value += value
+
+        list_of_keys.remove(card)
+        del deck[card]
+
         #       for key, value in deck.pop():
         #           print("KEY:", key, "VALUE:", value)
-
-        for key, value in deck.items():
-            value = value + deck.pop(key)
-            print(value)
+    #     for key, value in deck.items():
+    #       value = value + deck.pop(key)
+    #        print(value)
 
     # Display the value of the hand.
-    print(value)
+    print(hand_value)
 
 
 # Call the main function.
